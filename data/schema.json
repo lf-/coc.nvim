@@ -1007,6 +1007,11 @@
       "default": 12,
       "description": "Max height of preview window for hover."
     },
+    "coc.preferences.previewMaxWidth": {
+      "type": "number",
+      "default": 80,
+      "description": "Max width of preview window for hover in the the 'float' hoverTarget."
+    },
     "coc.preferences.currentFunctionSymbolAutoUpdate": {
       "type": "boolean",
       "description": "Automatically update the value of b:coc_current_function on CursorHold event",

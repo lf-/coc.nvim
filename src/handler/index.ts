@@ -36,6 +36,7 @@ interface Preferences {
   hoverTarget: string
   previewAutoClose: boolean
   previewMaxHeight: number
+  previewMaxWidth: number
   floatActions: boolean
 }
 
@@ -827,7 +828,8 @@ export default class Handler {
       }
     }
     if (target == 'float') {
-      await this.hoverFactory.show(docs, { modes: ['n'] })
+      const {previewMaxWidth, previewMaxHeight} = this.preferences
+      await this.hoverFactory.show(docs, { modes: ['n'], maxWidth: previewMaxWidth, maxHeight: previewMaxHeight })
       return
     }
     let lines = docs.reduce((p, c) => {
@@ -856,6 +858,7 @@ export default class Handler {
     this.preferences = {
       hoverTarget,
       previewMaxHeight: config.get<number>('previewMaxHeight', 12),
+      previewMaxWidth: config.get<number>('previewMaxWidth', 80),
       previewAutoClose: config.get<boolean>('previewAutoClose', false),
       floatActions: config.get<boolean>('floatActions', true)
     }
